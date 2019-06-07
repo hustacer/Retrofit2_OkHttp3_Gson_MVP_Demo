@@ -37,10 +37,10 @@ public class MainActivity extends AppCompatActivity implements IWeatherView, Vie
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.bj_search:
-                weatherPresenter.loadWeather("101030100");
+                weatherPresenter.loadWeather("%E5%8C%97%E4%BA%AC");
                 break;
             case R.id.gz_search:
-                weatherPresenter.loadWeather("101030100");
+                weatherPresenter.loadWeather("%E5%B9%BF%E5%B7%9E");
                 break;
             default:
                 break;
@@ -69,10 +69,10 @@ public class MainActivity extends AppCompatActivity implements IWeatherView, Vie
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                if (weatherBean.getStatus() != 200) {
-                    Toast.makeText(MainActivity.this, weatherBean.getMessage(), Toast.LENGTH_LONG).show();
+                if (weatherBean.getCode() != 200) {
+                    Toast.makeText(MainActivity.this, weatherBean.getMsg(), Toast.LENGTH_LONG).show();
                 } else {
-                    tvWeather.setText("City:" + weatherBean.getCityInfo().getCity() + " Date:" + weatherBean.getDate()
+                    tvWeather.setText("City:" + weatherBean.getData().getCity() + " Date:" + weatherBean.getData().getForecast().get(0).getDate()
                     + " Temperature:" + weatherBean.getData().getWendu());
                     tvWeatherYes.setText("Yesterday Temperature:" + weatherBean.getData().getYesterday().getLow()
                             + " ~ "  + weatherBean.getData().getYesterday().getHigh());

@@ -20,7 +20,7 @@ public class WeatherPresenter implements IWeatherPresenter,ILoadListener {
     @Override
     public void loadWeather(String city) {
         iWeatherView.showProgress();
-        iWeatherModel.loadWeather(url+city, this);
+        iWeatherModel.loadWeather(city, this);
     }
 
     @Override
